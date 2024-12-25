@@ -21,7 +21,7 @@ class XSSection(object):
         self.index_num:int = -1 # 章节原文上提取到的序号
         self.is_valid = False
         self.section_name:str = ""  # 章节名称
-        self.lines:list[str] = []  # 章节的每一行
+        self.lines:list[str] = []  # 章节的每一行, 第一行标题行也在
         self.role_lines:list[str] = []  # 每一行
         self.key_word = []
         last_section_num = -1
@@ -106,7 +106,10 @@ class XSSection(object):
 
 
 class XiaoshuoProcess(object):
-    """实现对小说的各种预处理操作"""
+    """
+    实现对小说的各种预处理操作
+    1. 切分成章节，并格式化章节内容
+    """
     pass   
 
     def __init__(self, file_path):
@@ -114,7 +117,7 @@ class XiaoshuoProcess(object):
         self.introduct = ""
         self.file_path = file_path
         self.invalid_flags = []
-        self.section_flag= """------------"""
+        self.section_flag= """------------"""  # section切分标记符
         self.section_map = {} # "index_num": xs_section
     
     def split_all_in_one(self):

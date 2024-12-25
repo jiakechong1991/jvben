@@ -20,6 +20,7 @@ class Character(object):
 
 
 class CharacterAnalyse(object):
+    """角色分析"""
     pass
 
 
@@ -65,14 +66,15 @@ class CharacterAnalyse(object):
         for item_group in all_lines_group:
             history_list = deepcopy(history_list2)
             this_group_lines = "\n".join(item_group)
+            print("@@@@片段原文：")
             print(this_group_lines)
-            print("----+++++")
             history_list[-1]["content"] = history_list[-1]["content"].format(a=this_group_lines).strip()
+            print("@@@@提示词请求")
             print(history_list) 
-            print("+++++")
             a = api_llm(history_list=history_list)
             a = "["+a
             a = "kkk第{a}章 第{b}小节 行号:{c}\n".format(a=in_xs_section.index_num, b=sun_sec_num, c=all_line_index_group[sun_sec_num]) + a
+            print("@@@@api结果")
             print(a)
             role_jvben_list.append(a)
             sun_sec_num += 1
