@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
-from tools import api_llm
+from prompt_test import api_llm
 import copy
 import tqdm
-from xiaoshuo_pre import XiaoshuoProcess, XSSection
-from tools import total_token
+from text_parse.split_section import XiaoshuoProcess, XSSection
+from prompt_test import total_token
 
 class YaSuoTool(object):
     pass

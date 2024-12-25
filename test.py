@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from tools import api_llm
+from prompt_test import api_llm
 
 
 history_list2 = [

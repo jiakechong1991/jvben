@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
-from xiaoshuo_pre import XSSection
-from tools import api_llm
+from text_parse.split_section import XSSection
+from prompt_test import api_llm
 from copy import deepcopy
 
 

@@ -1,22 +1,22 @@
 # -*- coding:utf-8 -*-
 
-import cn2an
 from openai import OpenAI
-from config import llm_model, total_token
-# Set OpenAI's API key and API base to use vLLM's API server.
-openai_api_key = "EMPTY"
-openai_api_base = "http://localhost:8081/v1"
+from config import model_config, total_token
 
+openai_api_key = "EMPTY"
+modle_ins = "qwen2.5-1.5B"
 
 
 def api_llm(history_list):
     client = OpenAI(
         api_key=openai_api_key,
-        base_url=openai_api_base,
+        base_url=model_config[modle_ins]["url"]
     )
 
     chat_response = client.chat.completions.create(
-        model=llm_model,
+        model=model_config[modle_ins]["llm_path"],
+        #model=model_config["qwen2.5-3B"],
+        #model=model_config["qwen2.5-7B"],
         messages=history_list,
         temperature=0.7,
         top_p=0.8,
@@ -35,13 +35,7 @@ def api_llm(history_list):
     return res
 
 
-def convert_numbers(input_str):
-    """将包含数字和中文数字的列表转换为整数列表"""
 
-    if input_str.isdigit():  # 检查是否为数字
-        return int(input_str)
-    else:
-        return cn2an.cn2an(input_str, "normal")
 
 """
 方寒体内蓄积已久的“木皇真气”终在与水蛊天魔十万魔兵的激战后，于凝练道家罡气的关键时刻遭遇重创，延缓了进阶的步伐。他曾因世界之树碎片的滋养，将木皇真气锤炼至炉火纯青，为日后修行奠定了坚实基础。若非此碎片，他虽能速成罡气，根基却难稳固，恐需滞留于罡气境数十年，且威力有限。

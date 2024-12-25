@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import os, sys
 import tqdm
-from xiaoshuo_pre import XiaoshuoProcess, XSSection
+from text_parse.split_section import XiaoshuoProcess, XSSection
 from character_analyse import CharacterAnalyse
 from config import total_token
 from yasuo_jvben import YaSuoTool

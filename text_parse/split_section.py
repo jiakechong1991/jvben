@@ -2,7 +2,17 @@
 
 import re
 import os,sys
-from tools import convert_numbers
+import cn2an
+
+from prompt_test import convert_numbers
+
+def convert_numbers(input_str):
+    """将包含数字和中文数字的列表转换为整数列表"""
+
+    if input_str.isdigit():  # 检查是否为数字
+        return int(input_str)
+    else:
+        return cn2an.cn2an(input_str, "normal")
 
 
 class XSSection(object):
@@ -14,7 +24,8 @@ class XSSection(object):
     pass
     def __init__(self, section_context: str):
         """
-        输入：一段文本
+        对章节 进行解析
+        输入：一段文本(章节)
         输出：章节序号，章节名称，章节内容
         """
         
@@ -92,17 +103,11 @@ class XSSection(object):
         #         2/0
         #         break
 
-    def dump_jvben(self, file_path):
+    def dump_jvben(self):
         
         all_line = ["第{a}章  {b}".format(a=self.index_num, b=self.section_name)]
-        all_line.extend(self.role_lines)
         # if os.path.exists()
-        with open(file_path, "a") as fp:
-            for item_line in all_line:
-                fp.write("{a}\n".format(a=item_line))
-        
-        
-
+        return all_line + self.lines
 
 
 class XiaoshuoProcess(object):
@@ -118,6 +123,7 @@ class XiaoshuoProcess(object):
         self.file_path = file_path
         self.invalid_flags = []
         self.section_flag= """------------"""  # section切分标记符
+        # 切分后结果，保存在这个结构体中
         self.section_map = {} # "index_num": xs_section
     
     def split_all_in_one(self):
@@ -155,41 +161,10 @@ class XiaoshuoProcess(object):
 if __name__ == "__main__":
     pass
     
-#     aa="""
-
-
-# 第三百零八章 天龙骸骨
-
-
-
-#     那二皇子和黄泉魔宗高手“黑幽王”一飞过来，把湖泊上的滚滚乌云全部冲开。
-
-
-
-#     同时两大高手双眼放光"""
-
-#     XSSection(aa)
 
     xiaoshuo_ins = XiaoshuoProcess("/home/wangxk/project/product/jvben/data/jvben_source/yongsheng.txt")
     xiaoshuo_ins.split_all_in_one()
 
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    pass
 
 
 
