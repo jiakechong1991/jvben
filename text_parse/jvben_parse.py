@@ -17,6 +17,12 @@ def JvbenParse(file_path):
     """
     in: file_path : 输入文件的 路径
     out:  xiaoshuo_map : 解析后的 章节
+    {
+        3: {
+            "title": "xxx",
+            "content": []
+        }
+    }
     """
 
     # 切分章节

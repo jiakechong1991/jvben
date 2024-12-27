@@ -3,8 +3,9 @@
 import re
 import os,sys
 import cn2an
-
-from prompt_test import convert_numbers
+"""
+本文件主要功能：将输入的小说，切分整理成章节
+"""
 
 def convert_numbers(input_str):
     """将包含数字和中文数字的列表转换为整数列表"""
@@ -161,7 +162,6 @@ class XiaoshuoProcess(object):
 if __name__ == "__main__":
     pass
     
-
     xiaoshuo_ins = XiaoshuoProcess("/home/wangxk/project/product/jvben/data/jvben_source/yongsheng.txt")
     xiaoshuo_ins.split_all_in_one()
 
