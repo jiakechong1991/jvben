@@ -162,7 +162,7 @@ class XiaoshuoProcess(object):
 if __name__ == "__main__":
     pass
     
-    xiaoshuo_ins = XiaoshuoProcess("/home/wangxk/project/product/jvben/data/jvben_source/yongsheng.txt")
+    xiaoshuo_ins = XiaoshuoProcess("{a}/data/jvben_source/yongsheng.txt".format(a="/home/wxk/project_linux/product/jvben"))
     xiaoshuo_ins.split_all_in_one()
 
 

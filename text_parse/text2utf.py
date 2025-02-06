@@ -30,8 +30,8 @@ def text2utf8(in_file, out_file):
 
 if __name__ == "__main__":
 
-    in_file = "/home/wangxk/project/product/jvben/data/jvben_source/zhetian.txt"
-    out_file = "/home/wangxk/project/product/jvben/data/jvben_source/zhetian_utf.txt"
+    in_file = "/home/wxk/download/凡人修仙传校对版全本.txt"
+    out_file = "/home/wxk/download/凡人修仙传校对版全本utf.txt"
 
     text2utf8(in_file, out_file)
 
