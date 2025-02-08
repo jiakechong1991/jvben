@@ -5,7 +5,8 @@ from config import model_config, total_token
 
 openai_api_key = "EMPTY"
 modle_ins = "qwen2.5-1.5B"
-
+#model=model_config["qwen2.5-3B"],
+#model=model_config["qwen2.5-7B"],
 
 def api_llm(history_list):
     client = OpenAI(
@@ -15,8 +16,6 @@ def api_llm(history_list):
 
     chat_response = client.chat.completions.create(
         model=model_config[modle_ins]["llm_path"],
-        #model=model_config["qwen2.5-3B"],
-        #model=model_config["qwen2.5-7B"],
         messages=history_list,
         temperature=0.7,
         top_p=0.8,
@@ -64,6 +63,11 @@ if __name__ == "__main__":
 
 
     from prompt_temp import history_list3
+    history_list3 = [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": """凡人修仙传 这个小说的男主叫做韩立，你知道这个小说的作者是谁吗？"""},
+    ]
+
     history_list = history_list3
     a = api_llm(history_list=history_list)
     print(a)
